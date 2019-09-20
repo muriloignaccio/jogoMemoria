@@ -1,45 +1,104 @@
-q1 = document.getElementsByClassName("cu");
-// q2 = document.getElementById("q2");
-// q3 = document.getElementById("q3");
-// q4 = document.getElementById("q4");
-// q5 = document.getElementById("q5");
-// q6 = document.getElementById("q6");
-// q7 = document.getElementById("q7");
-// q8 = document.getElementById("q8");
-// q9 = document.getElementById("q9");
-// q10 = document.getElementById("q10");
-// q11 = document.getElementById("q11");
-// q12 = document.getElementById("q12");
-// q13 = document.getElementById("q13");
-// q14 = document.getElementById("q14");
-// q15 = document.getElementById("q15");
-// q16 = document.getElementById("q16");
+//Criando váriavel para chamar todas as divs presentes no HTML
+let cartas = document.querySelectorAll(".container div");
 
+//Criando váriavel que irá armazenar a quantidade de cliques
 let click = 0;
+
+// function fecharCartas(){
+//     all.classlist.toggle("")
+// }
+
+//Criando função que irá mudar a cor quando clicar em alguma div, obedeçendo a condição de que só podera mudar a cor se a quantidade de cliques for menor que 2 e que a div não já tenha mudado de cor.
 function mudarCor(event){
     if(click < 2 && event.target.style.backgroundColor != "red"){
         event.target.style.backgroundColor = "red";
-        console.log(event.target.tagName);
+        console.log(event.target.id);
         console.log(click);
         event.onclick = click++;
     }
 }
-// q1.onclick = mudarCor;
-// q2.onclick = mudarCor;
-// q3.onclick = mudarCor;
-// q4.onclick = mudarCor;
-// q5.onclick = mudarCor;
-// q6.onclick = mudarCor;
-// q7.onclick = mudarCor;
-q8.onclick = mudarCor;
-q9.onclick = mudarCor;
-// q10.onclick = mudarCor;
-// q11.onclick = mudarCor;
-// q12.onclick = mudarCor;
-// q13.onclick = mudarCor;
-// q14.onclick = mudarCor;
-// q15.onclick = mudarCor;
-// q16.onclick = mudarCor;
+
+//Dizendo que ao clicar na div ela deve executar a função que irá mudar a cor
+// function abrirCartas(){
+    //     for(let carta of cartas){
+        
+        //     }
+        // }
+let images = [
+    "barbara.jpeg",
+    "barbara.jpeg",
+    "barbara.jpeg",
+    "barbara.jpeg",
+    "barbara.jpeg",
+    "barbara.jpeg",
+    "barbara.jpeg",
+    "barbara.jpeg",
+    "fagner.jpeg",
+    "fagner.jpeg",
+    "fagner.jpeg",
+    "fagner.jpeg",
+    "fagner.jpeg",
+    "fagner.jpeg",
+    "fagner.jpeg",
+    "fagner.jpeg",
+];
+
+shuffle(images);
+function fotoBack(){
+    for(let carta of cartas){
+        carta.onclick = mudarCor;
+        carta.style.backgroundImage = `url(images/${images[Number(carta.id)]})`;
+        carta.style.backgroundRepeat = "no-repeat"
+    }
+}
+//Criando uma função que irá embaralhar a posição das cartas
+// function shuffle(lista) {
+    
+//     //Criando váriaveis que irão ser responsáveis por fazer uma troca nos valores das posições da lista
+//     //Váriavel j irá armazernar um número aleatória entre 0 e 15; Váriavel x irá guardar o valor da lista antes de ser trocado; Váriavel i fará o trabalho de um contador
+//     let aleatorio, abrigador, i;
+//     for (i = lista.length - 1; i > 0; i--) {
+//         aleatorio = Math.floor(Math.random() * (i + 1));
+//         abrigador = lista[i].id;
+//         lista[i].id = lista[aleatorio].id;
+//         lista[aleatorio].id = abrigador;
+//     }
+//     return lista;
+// }
+function shuffle(lista) {
+    
+    //Criando váriaveis que irão ser responsáveis por fazer uma troca nos valores das posições da lista
+    //Váriavel j irá armazernar um número aleatória entre 0 e 15; Váriavel x irá guardar o valor da lista antes de ser trocado; Váriavel i fará o trabalho de um contador
+    let aleatorio, abrigador, i;
+    for (i = lista.length - 1; i > 0; i--) {
+        aleatorio = Math.floor(Math.random() * (i + 1));
+        abrigador = lista[i];
+        lista[i] = lista[aleatorio];
+        lista[aleatorio] = abrigador;
+        fotoBack();
+    }
+    return lista;
+}
+
+//Criando uma função que irá embaralhar a posição das cartas
+// function shuffle(lista) {
+    
+//     //Criando váriaveis que irão ser responsáveis por fazer uma troca nos valores das posições da lista
+//     //Váriavel j irá armazernar um número aleatória entre 0 e 15; Váriavel x irá guardar o valor da lista antes de ser trocado; Váriavel i fará o trabalho de um contador
+//     let aleatorio, abrigador, i;
+//     for (i = lista.length - 1; i > 0; i--) {
+//         aleatorio = Math.floor(Math.random() * (i + 1));
+//         abrigador = lista[i].style.gridArea;
+//         lista[i].style.gridArea = lista[aleatorio].style.gridArea;
+//         lista[aleatorio].style.gridArea = abrigador;
+//     }
+//     return lista;
+// }
+// for (position of positions){
+//     shuffle(positions);
+//     position.style.gridArea = "c" + String(random);
+
+// }
 
 
-
+shuffle(images);

@@ -16,17 +16,17 @@ body{
     grid-template-rows: 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     height: 90vh;
-    width: 90vw;
+    width: 60vw;
 }
 body > div > div{
-    align-items: center;
-    background-color: rgb(88, 102, 165);
+    background-color: rgba(250, 104, 104, 0.466);
     border-radius: 10px;
-    display: flex;
     font-size: 18pt;
-    justify-content: center;
 }
 #q1{
+    background-image: url(../images/rusbe.jpeg);
+    background-repeat: no-repeat;
+    background-position: center;
     grid-area: c1;
 }
 #q2{
@@ -43,4 +43,13 @@ body > div > div{
 }
 #q6{
     grid-area: c6;
+}
+#q7{
+    grid-area: c7;
+}
+img{
+    border-radius: 10px;
+}
+.show{
+    display:none
 }
