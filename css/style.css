@@ -51,5 +51,5 @@ img{
     border-radius: 10px;
 }
 .show{
-    display:none
+    background-image: none;
 }
