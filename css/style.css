@@ -1,5 +1,7 @@
 body{
     align-items: center;
+    background-color: #2d2d34;
+    cursor: url("../images/Michael\ Jackson.cur"), default;
     display: flex;
     height: 100vh;
     justify-content: center;
@@ -9,44 +11,20 @@ body{
 .container{
     display: grid;
     grid-gap: 15px;
-    grid-template-areas:    "c1 c2 c3 c4"
+    /* grid-template-areas:    "c1 c2 c3 c4"
                             "c5 c6 c7 c8"
                             "c9 c10 c11 c12"
-                            "c13 c14 c15 c16";
+                            "c13 c14 c15 c16"; */
     grid-template-rows: 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     height: 90vh;
     width: 60vw;
 }
 body > div > div{
-    background-color: rgba(250, 104, 104, 0.466);
+    background-color: #f09997;
     border-radius: 10px;
     font-size: 18pt;
 }
-#q1{
-    background-image: url(../images/rusbe.jpeg);
-    background-repeat: no-repeat;
-    background-position: center;
-    grid-area: c1;
-}
-#q2{
-    grid-area: c2;
-}
-#q3{
-    grid-area: c3;
-}
-#q4{
-    grid-area: c4;
-}
-#q5{
-    grid-area: c5;
-}
-#q6{
-    grid-area: c6;
-}
-#q7{
-    grid-area: c7;
-}
-img{
-    border-radius: 10px;
+body > div > div:hover{
+    background-color: rgb(219, 155, 155);
 }

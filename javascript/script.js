@@ -28,9 +28,10 @@ function fotoBack(){
     for(let carta of cartas){
         carta.onclick = revelarCarta;
         carta.style.backgroundImage = `url(images/${images[Number(carta.id)]})`;
-        carta.style.backgroundRepeat = "no-repeat"
+        carta.style.backgroundRepeat = "no-repeat";
+        carta.style.backgroundPosition = "center";
+        carta.style.border = "solid 2px #fae3e2"
     }
-    console.log("oi")
 }
 
 
@@ -46,7 +47,7 @@ function esconderCartas(){
 }
 
 //Criando um alerta que irá avisar o cliente de que deve memorizar as cartas em um período de 5 segundos
-alert("Você tem 5 segundos para memorizar as cartas")
+alert("Nos ajude a encontrar todos os ninjas! Você tem 5 segundos para memorizar onde eles estão!!");
 
 //Criando um temporizador que depois de 5 segundos irá executar a função "esconderCartas"
 setTimeout(esconderCartas, 5000);
@@ -82,18 +83,18 @@ function revelarCarta(event){
 
         //Irá verificar se a imagem de uma carta é diferente de outro, se for, irá demorar 1 segundo e irá deixar-las invisivel
         }else if(events[0].style.backgroundImage !== events[1].style.backgroundImage){
-            setTimeout(esconderCartas, 1000);
+            setTimeout(esconderCartas, 700);
             events = [];
             click = 0;
         }
         //Irá percorrer todas as cartas e verificar se elas estão invisiveis, se estiverem é porque já foram selecionadas
         for(carta of cartas){
             if(carta.style.opacity == "0"){
-                turns++
+                turns++;
             }
         }
         //Irá verificar se a váriavel turns possui valor 16, se sim é porque todas as cartas foram encontradas, logo, ganhou o jogo
         if(turns==16){
-            alert("Você ganhou!")
+            alert("Você ganhou!");
         }
     }
