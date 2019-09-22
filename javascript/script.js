@@ -74,7 +74,7 @@ function revelarCarta(event){
             alert("Selecione mais uma carta!");
         }
         if(events[0].style.backgroundImage === "url(\"images/rusbe.jpeg\")"){
-            alert("parabéns!");
+            alert("Você acabou de encontrar o Rusbé do mal, com ele você acaba de receber uma maldição pro resto da sua vida, tenha uma boa viagem para o Inferno!");
             limparTudo();
         }
 
@@ -106,5 +106,5 @@ function revelarCarta(event){
         for(carta of cartas){
             carta.style.opacity = "0";
         }
-        return "cu"
+        turns++
     }
