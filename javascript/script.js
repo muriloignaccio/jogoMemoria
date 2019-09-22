@@ -3,8 +3,8 @@ let cartas = document.querySelectorAll(".container div");
 
 //Criando uma lista com a url de todas as imagens que vão aparecer nas cartas
 let images = [
-    "barbara.jpeg", "barbara.jpeg", "barbara.jpeg", "barbara.jpeg", "barbara.jpeg", "barbara.jpeg",
-    "barbara.jpeg", "barbara.jpeg", "fagner.jpeg", "fagner.jpeg", "fagner.jpeg", "fagner.jpeg",
+    "barbara.jpeg", "barbara.jpeg", "barbara.jpeg", "barbara.jpeg", "murilo.png", "murilo.png",
+    "ana.png", "ana.png", "fagner.jpeg", "fagner.jpeg", "fayra.png", "fayra.png",
     "fagner.jpeg", "fagner.jpeg", "fagner.jpeg", "fagner.jpeg"
 ];
 
