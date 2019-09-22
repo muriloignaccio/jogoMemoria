@@ -33,7 +33,6 @@ function fotoBack(){
     }
 }
 
-
 //Executando função para randomizar as posições da lista "images" e colocar cada elemento como background image
 shuffle(images);
 
@@ -111,8 +110,9 @@ function revelarCarta(event){
             }
         }
         //Irá verificar se a váriavel turns possui valor 16, se sim é porque todas as cartas foram encontradas, logo, ganhou o jogo
-        if(turns==16){
+        if(turns==14){
             alert("Você ganhou!");
+            limparTudo();
         }
     }
     //Essa função irá remover todas as cartas quando o rusbé ou a fayra for selecionada.
