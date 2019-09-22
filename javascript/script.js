@@ -73,9 +73,13 @@ function revelarCarta(event){
         }else if(event.target.style.backgroundImage != "none" && click < 2){
             alert("Selecione mais uma carta!");
         }
+        if(events[0].style.backgroundImage === "url(\"images/rusbe.jpeg\")"){
+            alert("parabéns!");
+            limparTudo();
+        }
 
         //Irá verificar se a imagem de uma carta é igual a outra, se for, ira deixar-las invisiveis e resetar o click e a lista que abriga os eventos
-        if(events[0].style.backgroundImage === events[1].style.backgroundImage){
+        else if(events[0].style.backgroundImage === events[1].style.backgroundImage){
             events[0].style.opacity = "0"; 
             events[1].style.opacity = "0";
             click = 0;
@@ -97,4 +101,10 @@ function revelarCarta(event){
         if(turns==16){
             alert("Você ganhou!");
         }
+    }
+    function limparTudo(){
+        for(carta of cartas){
+            carta.style.opacity = "0";
+        }
+        return "cu"
     }
