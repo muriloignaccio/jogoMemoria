@@ -57,40 +57,43 @@ let click = 0;
 //Criando função que irá verificar se o conteúdo está vazio e se não foi revelado mais que duas cartas, sendo essa condição verdadeira, a carta vazia irá ser revelada até que duas cartas sejam.
 let events = [];
 function revelarCarta(event){
+    
+    //Contador que irá somar 1 cada vez que uma carta desaparecer
     turns = 0;
+
+        //Irá verificar se a carta está vazia e se quantidade de cliques é menor que 2 (2 cartas selecionadas)   
         if(event.target.style.backgroundImage == "none" && click < 2){
             event.target.style.backgroundImage = `url(images/${images[Number(event.target.id)]})`;
             let event1 = event.target;
             events.push(event1);
-            console.log(events);
-            console.log(event.target.id);
             event.onclick = click++;
-            console.log("Background vazio")
+        
+        //Irá verificar se o conteúdo da está com uma imagem e quantidade de cliques é menor que 2
         }else if(event.target.style.backgroundImage != "none" && click < 2){
             alert("Selecione mais uma carta!");
-            console.log("Estou no segundo if");
-            verificacao();
-        }else{
-            console.log("Estou no segundo else");
         }
+
+        //Irá verificar se a imagem de uma carta é igual a outra, se for, ira deixar-las invisiveis e resetar o click e a lista que abriga os eventos
         if(events[0].style.backgroundImage === events[1].style.backgroundImage){
             events[0].style.opacity = "0"; 
             events[1].style.opacity = "0";
             click = 0;
             events = [];
+
+        //Irá verificar se a imagem de uma carta é diferente de outro, se for, irá demorar 1 segundo e irá deixar-las invisivel
         }else if(events[0].style.backgroundImage !== events[1].style.backgroundImage){
             setTimeout(esconderCartas, 1000);
             events = [];
             click = 0;
         }
+        //Irá percorrer todas as cartas e verificar se elas estão invisiveis, se estiverem é porque já foram selecionadas
         for(carta of cartas){
             if(carta.style.opacity == "0"){
                 turns++
             }
-        }console.log(turns);
+        }
+        //Irá verificar se a váriavel turns possui valor 16, se sim é porque todas as cartas foram encontradas, logo, ganhou o jogo
         if(turns==16){
             alert("Você ganhou!")
         }
     }
-function verificacao(){
-}
