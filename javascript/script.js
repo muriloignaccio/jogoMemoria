@@ -3,9 +3,8 @@ let cartas = document.querySelectorAll(".container div");
 
 //Criando uma lista com a url de todas as imagens que vão aparecer nas cartas
 let images = [
-    "rusbe.jpeg", "barbara.jpeg", "barbara.jpeg", "barbara.jpeg", "barbara.jpeg", "barbara.jpeg",
-    "barbara.jpeg", "barbara.jpeg", "fagner.jpeg", "fagner.jpeg", "fagner.jpeg", "fagner.jpeg",
-    "fagner.jpeg", "fagner.jpeg", "fagner.jpeg", "fagner.jpeg"
+    "rusbe.jpeg", "barbara.jpeg", "barbara.jpeg", "claudia.png", "claudia.png", "murilo.png", "murilo.png",
+    "ana.png", "ana.png", "fagner.jpeg", "fagner.jpeg", "fayra.png", "amanda.png", "amanda.png", "richard.png", "richard.png"
 ];
 
 //Criando função que irá aleatorizar cada posição de uma lista e após ira colocar elas como background image
@@ -30,7 +29,7 @@ function fotoBack(){
         carta.style.backgroundImage = `url(images/${images[Number(carta.id)]})`;
         carta.style.backgroundRepeat = "no-repeat";
         carta.style.backgroundPosition = "center";
-        carta.style.border = "solid 2px #fae3e2"
+        carta.style.border = "solid 2px #fae3e2";
     }
 }
 
@@ -42,12 +41,11 @@ shuffle(images);
 function esconderCartas(){
     for(carta of cartas){
         carta.style.backgroundImage ="none";
-        console.log("escondeu a carta")
     }
 }
 
 //Criando um alerta que irá avisar o cliente de que deve memorizar as cartas em um período de 5 segundos
-alert("Nos ajude a encontrar todos os ninjas! Você tem 5 segundos para memorizar onde eles estão!!");
+alert("Seja bem vindo ao jogo da Vitória ou Derrota, o objetivo do jogo é encontrar o par de cada carta que você abrir, mas todos nós sabemos que nem tudo é tão fácil, então seu destino será baseado em sua sorte ou azar, Bom Jogo!");
 
 //Criando um temporizador que depois de 5 segundos irá executar a função "esconderCartas"
 setTimeout(esconderCartas, 5000);
@@ -73,11 +71,26 @@ function revelarCarta(event){
         }else if(event.target.style.backgroundImage != "none" && click < 2){
             alert("Selecione mais uma carta!");
         }
-        if(events[0].style.backgroundImage === "url(\"images/rusbe.jpeg\")"){
+        //Irá verificar se a primeira carta revelada é a fayra
+        if(events[0].style.backgroundImage === "url(\"images/fayra.png\")"){
+            alert("Você acabou de encontrar a Deusa Fayra e acaba de receber uma benção pro resto de sua vida, tenha uma boa vida e uma ótima viagem para o paraíso!");
+            limparTudo();
+        }
+        //Irá verificar se a primeira carta revelada é o rusbé
+        else if(events[0].style.backgroundImage === "url(\"images/rusbe.jpeg\")"){
+            alert("Você acabou de encontrar o Rusbé do mal, com ele você acaba de receber uma maldição pro resto da sua vida, tenha uma boa viagem para o Inferno!\n Obs: Isso não é uma alucinação!!!");
+            limparTudo();
+        }
+        //Irá verificar se a segunda carta revelada é a fayra
+        else if(events[1].style.backgroundImage === "url(\"images/fayra.png\")"){
+            alert("Você acabou de encontrar a Deusa Fayra e acaba de receber uma benção pro resto de sua vida, tenha uma boa vida e uma ótima viagem para o paraíso!");
+            limparTudo();
+        }
+        //Irá verificar se a segunda carta revelada é o rusbé
+        else if(events[1].style.backgroundImage === "url(\"images/rusbe.jpeg\")"){
             alert("Você acabou de encontrar o Rusbé do mal, com ele você acaba de receber uma maldição pro resto da sua vida, tenha uma boa viagem para o Inferno!");
             limparTudo();
         }
-
         //Irá verificar se a imagem de uma carta é igual a outra, se for, ira deixar-las invisiveis e resetar o click e a lista que abriga os eventos
         else if(events[0].style.backgroundImage === events[1].style.backgroundImage){
             events[0].style.opacity = "0"; 
@@ -102,9 +115,10 @@ function revelarCarta(event){
             alert("Você ganhou!");
         }
     }
+    //Essa função irá remover todas as cartas quando o rusbé ou a fayra for selecionada.
     function limparTudo(){
         for(carta of cartas){
             carta.style.opacity = "0";
         }
-        turns++
+        turns++;
     }
