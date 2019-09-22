@@ -45,10 +45,10 @@ function esconderCartas(){
 }
 
 //Criando um alerta que irá avisar o cliente de que deve memorizar as cartas em um período de 5 segundos
-alert("Seja bem vindo ao jogo da Vitória ou Derrota, o objetivo do jogo é encontrar o par de cada carta que você abrir, mas todos nós sabemos que nem tudo é tão fácil, então seu destino será baseado em sua sorte ou azar, Bom Jogo!");
+alert("Seja bem vindo ao jogo da Vitória ou Derrota, o objetivo do jogo é encontrar o par de cada carta que você abrir, para isso você terá 3 segundos para memorizar as posições, mas todos nós sabemos que nem tudo é tão fácil, então seu destino será baseado em sua sorte ou azar, Bom Jogo!");
 
 //Criando um temporizador que depois de 5 segundos irá executar a função "esconderCartas"
-setTimeout(esconderCartas, 5000);
+setTimeout(esconderCartas, 3000);
 
 //Criando váriavel que irá armazenar a quantidade de cliques
 let click = 0;
