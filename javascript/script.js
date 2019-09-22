@@ -8,15 +8,6 @@ let images = [
     "fagner.jpeg", "fagner.jpeg", "fagner.jpeg", "fagner.jpeg"
 ];
 
-//Criando função que irá colocar todas as imagens da lista "images" como background image das divs
-function fotoBack(){
-    for(let carta of cartas){
-        carta.onclick = mudarCor;
-        carta.style.backgroundImage = `url(images/${images[Number(carta.id)]})`;
-        carta.style.backgroundRepeat = "no-repeat"
-    }
-}
-
 //Criando função que irá aleatorizar cada posição de uma lista e após ira colocar elas como background image
 function shuffle(lista) {
     
@@ -32,25 +23,74 @@ function shuffle(lista) {
     return lista;
 }
 
+//Criando função que irá colocar todas as imagens da lista "images" como background image das divs e irá acionar a função de revelar carta quando ela dor clicada
+function fotoBack(){
+    for(let carta of cartas){
+        carta.onclick = revelarCarta;
+        carta.style.backgroundImage = `url(images/${images[Number(carta.id)]})`;
+        carta.style.backgroundRepeat = "no-repeat"
+    }
+    console.log("oi")
+}
+
+
 //Executando função para randomizar as posições da lista "images" e colocar cada elemento como background image
 shuffle(images);
 
-// function esconderCartas(event){
-//     event.target.style.backgroundImage="none";
-// }
-// for(carta of cartas){
-//     carta.onclick = esconderCartas;
-// }
-//Criando váriavel que irá armazenar a quantidade de cliques
-let click = 0;
-
-//Criando função que irá mudar a cor quando clicar em alguma div, obedeçendo a condição de que só podera mudar a cor se a quantidade de cliques for menor que 2 e que a div não já tenha mudado de cor.
-function mudarCor(event){
-    if(click < 2 && event.target.style.backgroundColor != "red"){
-        event.target.style.backgroundColor = "red";
-        console.log(event.target.id);
-        console.log(click);
-        event.onclick = click++;
+//Criando função que irá esconder as cartas
+function esconderCartas(){
+    for(carta of cartas){
+        carta.style.backgroundImage ="none";
+        console.log("escondeu a carta")
     }
 }
 
+//Criando um alerta que irá avisar o cliente de que deve memorizar as cartas em um período de 5 segundos
+alert("Você tem 5 segundos para memorizar as cartas")
+
+//Criando um temporizador que depois de 5 segundos irá executar a função "esconderCartas"
+setTimeout(esconderCartas, 5000);
+
+//Criando váriavel que irá armazenar a quantidade de cliques
+let click = 0;
+
+//Criando função que irá verificar se o conteúdo está vazio e se não foi revelado mais que duas cartas, sendo essa condição verdadeira, a carta vazia irá ser revelada até que duas cartas sejam.
+let events = [];
+function revelarCarta(event){
+    turns = 0;
+        if(event.target.style.backgroundImage == "none" && click < 2){
+            event.target.style.backgroundImage = `url(images/${images[Number(event.target.id)]})`;
+            let event1 = event.target;
+            events.push(event1);
+            console.log(events);
+            console.log(event.target.id);
+            event.onclick = click++;
+            console.log("Background vazio")
+        }else if(event.target.style.backgroundImage != "none" && click < 2){
+            alert("Selecione mais uma carta!");
+            console.log("Estou no segundo if");
+            verificacao();
+        }else{
+            console.log("Estou no segundo else");
+        }
+        if(events[0].style.backgroundImage === events[1].style.backgroundImage){
+            events[0].style.opacity = "0"; 
+            events[1].style.opacity = "0";
+            click = 0;
+            events = [];
+        }else if(events[0].style.backgroundImage !== events[1].style.backgroundImage){
+            setTimeout(esconderCartas, 1000);
+            events = [];
+            click = 0;
+        }
+        for(carta of cartas){
+            if(carta.style.opacity == "0"){
+                turns++
+            }
+        }console.log(turns);
+        if(turns==16){
+            alert("Você ganhou!")
+        }
+    }
+function verificacao(){
+}
