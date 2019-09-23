@@ -115,10 +115,15 @@ function revelarCarta(event){
             limparTudo();
         }
     }
-    //Essa função irá remover todas as cartas quando o rusbé ou a fayra for selecionada.
+    //Essa função irá remover todas as cartas quando o rusbé ou a fayra for selecionada ou se todas as cartas forem encontradas. Depois irá atualizar a página.
     function limparTudo(){
         for(carta of cartas){
             carta.style.opacity = "0";
         }
         turns++;
+        setTimeout(recarregarPagina, 2000);
+    }
+    //Essa função recarrega a página
+    function recarregarPagina(){
+        window.location.reload();
     }
